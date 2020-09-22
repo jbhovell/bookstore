@@ -2,12 +2,20 @@ var express = require('express');
 var router = express.Router();
 const fs = require('fs');
 
-/* GET users listing. */
+const data = fs.readFileSync('books.json');
+const books = JSON.parse(data);
+
+/* GET all books listing. */
 router.get('/', function (req, res, next) {
-  let rawdata = fs.readFileSync('books.json');
-  let books = JSON.parse(rawdata);
-  console.log(books);
-  res.send(JSON.stringify(books, null, '\t'));
+  res.send(JSON.stringify(books, null, '\n'));
+});
+
+router.get('/search', function (req, res, next) {
+  const title = req.query.title;
+  for (const item of books) {
+    if (item.title === title)
+      res.send(item)
+  }
 });
 
 module.exports = router;
