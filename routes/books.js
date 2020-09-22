@@ -7,15 +7,36 @@ const books = JSON.parse(data);
 
 /* GET all books listing. */
 router.get('/', function (req, res, next) {
-  res.send(JSON.stringify(books, null, '\n'));
+  if (req.query.title) {
+    const title = req.query.title;
+    for (const item of books) {
+      if (item.title === title)
+        res.send(item)
+    }
+  }
+  else {
+    res.send(JSON.stringify(books, null, '\n'));
+  }
 });
 
-router.get('/search', function (req, res, next) {
+/* update stock, show error if quantity is greater than stock, update total books are sold and sum */
+router.post('/sell', function (req, res, next) {
   const title = req.query.title;
-  for (const item of books) {
-    if (item.title === title)
-      res.send(item)
-  }
+  const quantity = req.query.qunantity;
+
+});
+
+/* if the book exists, update stock, otherwise, add a new entry */
+router.post('/add', function (req, res, next) {
+  const book = req.query.book;
+});
+
+
+/* update a book's price */
+router.post('/update', function (req, res, next) {
+  const title = req.query.title;
+  const price = req.query.price;
+
 });
 
 module.exports = router;
