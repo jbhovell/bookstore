@@ -1,3 +1,3 @@
 # bookstore
 
-I used Node.js, Express, Swagger and SQLite to build this project.
+The project was built with Node.js, Express, Pug, Swagger and SQLite.
