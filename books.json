@@ -1,0 +1,27 @@
+[
+    {
+      "title": "Emma",
+      "author": "Jane Austen",
+      "year_published": "1815"
+    },
+    {
+      "title": "Great Expectations",
+      "author": "Charles Dickens",
+      "year_published": "1861"
+    },
+    {
+      "title": "Harry Potter",
+      "author": "J.K. Rowling",
+      "year_published": "1997"
+    },
+    {
+      "title": "Jane Eyre",
+      "author": "Charlotte Brontë",
+      "year_published": "1847"
+    },
+    {
+      "title": "Nineteen Eighty-four",
+      "author": "George Orwell",
+      "year_published": "1949"
+    }
+  ]
