@@ -1,7 +1,7 @@
 var express = require('express');
-var router = express.Router();
 const fs = require('fs');
 
+var router = express.Router();
 const data = fs.readFileSync('books.json');
 const books = JSON.parse(data);
 
@@ -19,23 +19,23 @@ router.get('/', function (req, res, next) {
   }
 });
 
-/* update stock, show error if quantity is greater than stock, update total books are sold and sum */
+/* update stock, show error if the book does not exist or the stock is lower, update total books are sold and sum */
 router.post('/sell', function (req, res, next) {
-  const title = req.query.title;
-  const quantity = req.query.qunantity;
-
+  console.log('Got body:', req.body);
+  res.sendStatus(200);
 });
 
 /* if the book exists, update stock, otherwise, add a new entry */
 router.post('/add', function (req, res, next) {
-  const book = req.query.book;
+  console.log('Got body:', req.body);
+  res.sendStatus(200);
 });
 
 
-/* update a book's price */
+/* update a book's price, show errors if the price is 0 or negative */
 router.post('/update', function (req, res, next) {
-  const title = req.query.title;
-  const price = req.query.price;
+  console.log('Got body:', req.body);
+  res.sendStatus(200);
 
 });
 
