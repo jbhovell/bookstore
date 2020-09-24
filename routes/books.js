@@ -23,8 +23,10 @@ router.post('/sell', function (req, res, next) {
   const item = findBook(title);
   if (item && item.quantity >= quantity) {
     item.price = price;
-    res.send(`sold ${req.body.quantity} ${req.body.title}`);
-    console.log(`sold ${req.body.quantity} ${req.body.title}`);
+    item.quantity -= quantity;
+    fs.writeFileSync('books.json', JSON.stringify(data))
+    res.send(`sold ${quantity} ${title}`);
+    console.log(`sold ${quantity} ${title}`);
   }
   else {
     res.send(`${title} was not found or the stock is too low. The transaction failed.`)
@@ -38,11 +40,13 @@ router.post('/add', function (req, res, next) {
   const item = findBook(title);
   if (item) {
     item.quantity += quantity;
+    fs.writeFileSync('books.json', JSON.stringify(data))
   }
   else {
-    const price = req.body.quantity;
+    const price = req.body.price;
     const newItem = { title: title, lowercase_title: title.toLowerCase(), price: price, quantity: quantity }
     data.books.push(newItem);
+    fs.writeFileSync('books.json', JSON.stringify(data))
   }
   console.log(`added ${quantity} ${title} to the stock`);
   res.send(`added ${quantity} ${title} to the stock`);
@@ -56,6 +60,7 @@ router.post('/update', function (req, res, next) {
   const item = findBook(title);
   if (item) {
     item.price = price;
+    fs.writeFileSync('books.json', JSON.stringify(data))
     res.send(item);
   }
   else {
