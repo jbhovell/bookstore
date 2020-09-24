@@ -8,11 +8,8 @@ const books = JSON.parse(data);
 /* GET all books listing. */
 router.get('/', function (req, res, next) {
   if (req.query.title) {
-    const title = req.query.title;
-    for (const item of books) {
-      if (item.title === title)
-        res.send(item)
-    }
+    const item = books.find(b => b.title === req.query.title);
+    res.send(item);
   }
   else {
     res.send(JSON.stringify(books, null, '\n'));
@@ -22,8 +19,18 @@ router.get('/', function (req, res, next) {
 /* add express validator and error handler */
 /* update stock, show error if the book does not exist or the stock is lower, update total books are sold and sum */
 router.post('/sell', function (req, res, next) {
-  console.log(`sold ${req.body.quantity} ${req.body.title}`);
-  res.send(`sold ${req.body.quantity} ${req.body.title}`);
+  const title = req.body.title;
+  const price = req.body.price;
+  const quantity = req.body.quantity;
+  const item = books.find(b => b.title === req.query.title);
+  if (item && item.quantity >= quantity) {
+    item.price = price;
+    res.send(`sold ${req.body.quantity} ${req.body.title}`);
+    console.log(`sold ${req.body.quantity} ${req.body.title}`);
+  }
+  else {
+    res.send(`${title} was not found or the stock is too low. The transaction failed.`)
+  }
 });
 
 /* if the book exists, update stock, otherwise, add a new entry */
@@ -35,9 +42,16 @@ router.post('/add', function (req, res, next) {
 
 /* update a book's price, show errors if the price is 0 or negative */
 router.post('/update', function (req, res, next) {
-  console.log(`updated ${req.body.title} price to ${req.body.price}`);
-  res.send(`updated ${req.body.title} price to ${req.body.price}`);
-
+  const title = req.body.title;
+  const price = req.body.price;
+  const item = books.find(b => b.title === req.query.title);
+  if (item) {
+    item.price = price;
+    res.send(book);
+  }
+  else {
+    res.send(`${title} was not found. No price update was made for the request.`)
+  }
 });
 
 module.exports = router;
