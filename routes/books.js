@@ -2,17 +2,15 @@ var express = require('express');
 const fs = require('fs');
 
 var router = express.Router();
-const data = fs.readFileSync('books.json');
-const books = JSON.parse(data);
-
+const data = JSON.parse(fs.readFileSync('books.json'));
 /* GET all books listing. */
 router.get('/', function (req, res, next) {
   if (req.query.title) {
-    const item = books.find(b => b.title === req.query.title);
+    const item = data.books.find(b => b.title === req.query.title);
     res.send(item);
   }
   else {
-    res.send(JSON.stringify(books, null, '\n'));
+    res.send(data['books']);
   }
 });
 
@@ -22,7 +20,7 @@ router.post('/sell', function (req, res, next) {
   const title = req.body.title;
   const price = req.body.price;
   const quantity = req.body.quantity;
-  const item = books.find(b => b.title === req.query.title);
+  const item = data.books.find(b => b.title === req.query.title);
   if (item && item.quantity >= quantity) {
     item.price = price;
     res.send(`sold ${req.body.quantity} ${req.body.title}`);
@@ -44,7 +42,7 @@ router.post('/add', function (req, res, next) {
 router.post('/update', function (req, res, next) {
   const title = req.body.title;
   const price = req.body.price;
-  const item = books.find(b => b.title === req.query.title);
+  const item = data.books.find(b => b.title === req.query.title);
   if (item) {
     item.price = price;
     res.send(book);
