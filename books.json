@@ -3,6 +3,7 @@
   [
       {
         "title": "Emma",
+        "lowercase_title": "emma",
         "author": "Jane Austen",
         "year_published": "1815",
         "price": 8.99,
@@ -10,6 +11,7 @@
       },
       {
         "title": "Great Expectations",
+        "lowercase_title": "great expectation",
         "author": "Charles Dickens",
         "year_published": "1861",
         "price": 5.95,
@@ -17,6 +19,7 @@
       },
       {
         "title": "Harry Potter",
+        "lowercase_title": "harry potter",
         "author": "J.K. Rowling",
         "year_published": "1997",
         "price": 9.00,
@@ -24,6 +27,7 @@
       },
       {
         "title": "Jane Eyre",
+        "lowercase_title": "jane eyre",
         "author": "Charlotte Brontë",
         "year_published": "1847",
         "price": 3.50,
@@ -31,6 +35,7 @@
       },
       {
         "title": "Nineteen Eighty-four",
+        "lowercase_title": "nineteen eighty-four",
         "author": "George Orwell",
         "year_published": "1949",
         "price": 2.80,
