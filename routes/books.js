@@ -44,7 +44,8 @@ router.post('/add', function (req, res, next) {
   }
   else {
     const price = req.body.price;
-    const newItem = { title: title, lowercase_title: title.toLowerCase(), price: price, quantity: quantity }
+    const author = req.body.author;
+    const newItem = { title: title, lowercase_title: title.toLowerCase(), author: author, price: price, quantity: quantity }
     data.books.push(newItem);
     fs.writeFileSync('books.json', JSON.stringify(data))
   }
