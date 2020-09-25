@@ -22,7 +22,7 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 
-app.use('/api-docs', (req, res, next) => {
+app.use('/ui', (req, res, next) => {
   swaggerDocument.host = req.header('x-forwarded-host');
   req.swaggerDoc = swaggerDocument;
   next();
@@ -42,7 +42,7 @@ app.use(function (req, res, next) {
   next(createError(404));
 });
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/ui', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // error handler
 app.use(function (err, req, res, next) {
