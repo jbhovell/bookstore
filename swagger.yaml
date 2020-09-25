@@ -27,30 +27,99 @@ paths:
               schema:
                 type: array
                 items:
-                  type: string
-  /books/sell:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    lowercase_title:
+                      type: string
+                    author:
+                      type: string
+                    year_published:
+                      type: string
+                    price:
+                      type: integer
+                    quantity:
+                      type: integer
+  /books/add:
     post:
-      summary: sell a book with any quantity
-      description: Optional extended description in CommonMark or HTML.
+      summary: add a book.
+      consumes:
+        - application/json
       parameters:
-        - name: title
-          in: path
+        - in: body
+          name: add
+          description: The book to add.
           schema:
-            type: string
-          description: The title of book to sell
-          required: true
-        - name: quantity
-          in: path
-          schema:
-            type: integer
-          description: The quantity to be sold
-          required: true
+            type: object
+            required:
+              - title
+              - quantity
+            properties:
+              title:
+                type: string
+              author:
+                type: string
+              price:
+                type: integer
+              quantity:
+                type: integer
       responses:
         "200":
-          description: A JSON array of books
+          description: A JSON Object for the book being added
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: string
+                type: object
+  /books/sell:
+    post:
+      summary: sell a book.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: add
+          description: The book to sell.
+          schema:
+            type: object
+            required:
+              - title
+              - quantity
+            properties:
+              title:
+                type: string
+              quantity:
+                type: integer
+      responses:
+        "200":
+          description: A JSON Object for the book being sold
+          content:
+            application/json:
+              schema:
+                type: object
+  /books/update:
+    post:
+      summary: update a book's price.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: add
+          description: update a book's price.
+          schema:
+            type: object
+            required:
+              - title
+              - price
+            properties:
+              title:
+                type: string
+              price:
+                type: integer
+      responses:
+        "200":
+          description: A JSON Object for the book being added
+          content:
+            application/json:
+              schema:
+                type: object
