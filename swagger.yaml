@@ -11,6 +11,8 @@ servers:
 paths:
   /books:
     get:
+      tags:
+        - List/Search
       summary: Returns all the books.
       description: Optional extended description in CommonMark or HTML.
       parameters:
@@ -41,55 +43,19 @@ paths:
                       type: integer
                     quantity:
                       type: integer
-  /books/add:
-    post:
-      summary: add a book.
-      consumes:
-        - application/json
-      parameters:
-        - in: body
-          name: add
-          description: The book to add.
-          schema:
-            type: object
-            required:
-              - title
-              - quantity
-            properties:
-              title:
-                type: string
-              author:
-                type: string
-              price:
-                type: integer
-              quantity:
-                type: integer
-      responses:
-        "200":
-          description: A JSON Object for the book being added
-          content:
-            application/json:
-              schema:
-                type: object
   /books/sell:
     post:
+      tags:
+        - Sell
       summary: sell a book.
-      consumes:
+      produces:
         - application/json
       parameters:
-        - in: body
-          name: add
+        - name: body
+          in: body
           description: The book to sell.
           schema:
-            type: object
-            required:
-              - title
-              - quantity
-            properties:
-              title:
-                type: string
-              quantity:
-                type: integer
+            $ref: "#/definitions/Sell"
       responses:
         "200":
           description: A JSON Object for the book being sold
@@ -99,23 +65,38 @@ paths:
                 type: object
   /books/update:
     post:
-      summary: update a book's price.
-      consumes:
+      tags:
+        - Update
+      summary: "A request to get an object from storage"
+      description: "Used to get an object from storage"
+      produces:
         - application/json
       parameters:
-        - in: body
-          name: add
-          description: update a book's price.
+        - name: body
+          in: body
+          required: true
           schema:
-            type: object
-            required:
-              - title
-              - price
-            properties:
-              title:
-                type: string
-              price:
-                type: integer
+            $ref: "#/definitions/Update"
+      responses:
+        "200":
+          description: A JSON Object for the book being updated
+          content:
+            application/json:
+              schema:
+                type: object
+  /books/add:
+    post:
+      tags:
+        - Add
+      summary: Add a book to the stock.
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          description: The book to sell.
+          schema:
+            $ref: "#/definitions/Add"
       responses:
         "200":
           description: A JSON Object for the book being added
@@ -123,3 +104,39 @@ paths:
             application/json:
               schema:
                 type: object
+definitions:
+  Update:
+    type: object
+    required:
+      - title
+      - price
+    properties:
+      title:
+        type: string
+        default: "Emma"
+      price:
+        type: integer
+        default: 1
+  Sell:
+    type: object
+    properties:
+      title:
+        type: string
+        default: "Emma"
+      quantity:
+        type: integer
+        default: 1
+  Add:
+    type: object
+    required:
+      - title
+      - quantity
+    properties:
+      title:
+        type: string
+      author:
+        type: string
+      price:
+        type: integer
+      quantity:
+        type: integer
