@@ -10,12 +10,15 @@ var usersRouter = require('./routes/users');
 
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
+var favicon = require('serve-favicon')
 
 const swaggerFile = path.join(__dirname, 'swagger.yaml');
 const swaggerDocument = YAML.load(swaggerFile);
 
 
 var app = express();
+
+app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
