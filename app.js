@@ -58,6 +58,11 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+  console.error(err);
+  res.status(500).json({ error: 'Internal server error' });
 });
+
+app.use((req, res) => res.status(404).json({ error: 'Not found' }));
+app.use((req, res) => res.status(400).json({ error: 'Bad request' }));
 
 module.exports = app;
