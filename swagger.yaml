@@ -43,14 +43,13 @@ paths:
       tags:
         - Sell
       summary: sell a book.
-      produces:
-        - application/json
-      parameters:
-        - name: body
-          in: body
-          description: The book to sell.
-          schema:
-            $ref: "#/definitions/Sell"
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/Sell"
       responses:
         "200":
           description: A JSON Object for the book being sold
@@ -63,15 +62,13 @@ paths:
       tags:
         - Update
       summary: "A request to get an object from storage"
-      description: "Used to get an object from storage"
-      produces:
-        - application/json
-      parameters:
-        - name: body
-          in: body
-          required: true
-          schema:
-            $ref: "#/definitions/Update"
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/Update"
       responses:
         "200":
           description: A JSON Object for the book being updated
@@ -84,14 +81,13 @@ paths:
       tags:
         - Add
       summary: Add a book to the stock.
-      produces:
-        - application/json
-      parameters:
-        - name: body
-          in: body
-          description: The book to sell.
-          schema:
-            $ref: "#/definitions/Add"
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/definitions/Add"
       responses:
         "200":
           description: A JSON Object for the book being added

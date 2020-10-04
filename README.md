@@ -45,6 +45,5 @@ http://localhost:3000/ui
 
 # to do
 
-error handling
-role permissions on view and edit
-fix post requests in swagger ui
+- [ ] error handling
+- [ ] role permissions on view and edit
