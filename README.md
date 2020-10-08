@@ -1,4 +1,4 @@
-# bookstore 
+# bookstore <img src="https://emojipedia.org/emoji/%F0%9F%93%98/" width="30px">
 Hello! <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px">
 
 I built the Rest API to list books, add book to the stock, sell books and update books prices.
@@ -52,4 +52,4 @@ http://localhost:3000/ui
 - [ ] docker
 - [ ] nginx
 
-![](https://img.shields.io/badge/<Node.js>-<Python>-<Java>-<Ruby>-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/<Node.js>-<Python>-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=2bbc8a)
