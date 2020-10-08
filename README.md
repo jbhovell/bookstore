@@ -1,13 +1,15 @@
 # bookstore
 Hello! <img src="public/images/wave.gif" width="30px">  Welcome to my bookstore!
 
-I built the Rest API with Node.js, Express, Pug, Swagger and SQLite. It lists, adds, sells books and updates books price, .
+I built the Rest API with Node.js, Express, Pug, Swagger and SQLite. It lists, adds, sells books and updates books price.
 
 It is running on Heroku.
 
 * https://jbh-express-bookstore.herokuapp.com/
 * https://jbh-express-bookstore.herokuapp.com/books
 * https://jbh-express-bookstore.herokuapp.com/ui/
+
+The features are accessible via curl commands, any Rest Client or Swagger UI (the UI link above).
 
 # rquests to the API
 
