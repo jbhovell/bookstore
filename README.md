@@ -1,5 +1,5 @@
 # bookstore
-Hello! <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px">
+Hello! <img src="public/images/wave.gif" width="30px">
 
 I built the Rest API to list, add, sell books and update prices.
 
