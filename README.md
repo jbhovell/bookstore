@@ -11,7 +11,7 @@ It is running on Heroku.
 
 The features are accessible via curl commands, any Rest Client or Swagger UI (the UI link above).
 
-# rquests to the API
+# Make requests to the API
 
 ### List all books:
 
@@ -33,7 +33,7 @@ The features are accessible via curl commands, any Rest Client or Swagger UI (th
 `curl -X POST -k -H 'Content-Type: application/json' -i 'https://jbh-express-bookstore.herokuapp.com/books/update' --data '{"title": "emma", "price":25.00}`
 
 
-# run locally
+# Run the app locally
 
 To run it locally,
 ```
@@ -43,7 +43,7 @@ http://localhost:3000/books
 http://localhost:3000/ui
 ```
 
-# to do
+# To do
 
 - [ ] error handling
 - [ ] authentication, roles permissions of view and edit
