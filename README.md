@@ -1,7 +1,7 @@
 # bookstore
 Hello! <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px">
 
-I built the Rest API to list books, add book to the stock, sell books and update books prices.
+I built the Rest API to list, add, sell books and update prices.
 
 The project was built with Node.js, Express, Pug, Swagger and SQLite.
 
