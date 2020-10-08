@@ -1,5 +1,5 @@
 # bookstore
-Hello! <img src="public/images/wave.gif" width="30px">
+Hello!  Welcome to my bookstore! <img src="public/images/wave.gif" width="30px">
 
 I built the Rest API to list, add, sell books and update prices.
 
