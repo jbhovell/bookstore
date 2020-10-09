@@ -1,7 +1,7 @@
 # bookstore
-Hello! <img src="public/images/wave.gif" width="30px">  Welcome to my bookstore repo.
+Hi! <img src="public/images/wave.gif" width="30px">  Welcome to my bookstore repo.
 
-I built the Rest API with Node.js, Express, Pug, Swagger and SQLite. It lists, adds, sells books and updates books price.
+I built the REST API with Node.js, Express, Pug, Swagger and SQLite. It lists, adds, sells books and updates books price.
 
 It is running on Heroku.
 
