@@ -45,6 +45,8 @@ http://localhost:3000/ui
 
 # To do
 
+- [ ] test error cases, exceptions
+- [ ] restructure files folders 
 - [ ] error handling
 - [ ] authentication, roles permissions of view and edit
 - [ ] react
