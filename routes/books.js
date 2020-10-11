@@ -1,7 +1,7 @@
 var express = require('express');
 const { check, validationResult } = require('express-validator');
 const fs = require('fs');
-const { data, find, sell, add } = require('./book-helper')
+const { data, find, sell, add, update } = require('./book-helper')
 
 var router = express.Router();
 /* GET all books listing. */
@@ -71,12 +71,9 @@ router.post('/update', [
   if (!errors.isEmpty()) {
     return res.status(400).jsonp(errors.array());
   }
-  const title = req.body.title;
-  const price = req.body.price;
-  const item = find(title);
+  const { title, price } = { title: req.body.title, price: req.body.price };
+  const item = update(title, price);
   if (item) {
-    item.price = price;
-    fs.writeFileSync('books.json', JSON.stringify(data))
     res.send(item);
   }
   else {

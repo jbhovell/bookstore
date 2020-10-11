@@ -1,4 +1,3 @@
-
 const fs = require('fs');
 
 const data = JSON.parse(fs.readFileSync('books.json'));
@@ -12,10 +11,10 @@ const sell = (title, quantity) => {
         save(data)
         return true;
     }
-    else return false;
+    return false;
 }
 
-const add = (title, quantity, price=1, author='no_name') => {
+const add = (title, quantity, price = 1, author = 'no_name') => {
     const item = find(title);
     if (item) {
         item.quantity += quantity;
@@ -27,6 +26,14 @@ const add = (title, quantity, price=1, author='no_name') => {
     save(data)
 }
 
+const update = (title, price) => {
+    const item = find(title);
+    if (item) {
+        item.price = price;
+        save(data);
+        return item;
+    }
+}
 const save = data => fs.writeFileSync('books.json', JSON.stringify(data))
 
-module.exports = { data, find, sell, add }
+module.exports = { data, find, sell, add, update }
