@@ -1,11 +1,9 @@
 const fs = require('fs');
 
-const data = JSON.parse(fs.readFileSync('books.json'));
+const find = (title, data) => data.books.find(b => b.lowercase_title === title.toLowerCase());
 
-const find = title => data.books.find(b => b.lowercase_title === title.toLowerCase());
-
-const sell = (title, quantity) => {
-    const item = find(title);
+const sell = (title, quantity, data) => {
+    const item = find(title, data);
     if (item && item.quantity >= quantity) {
         item.quantity -= quantity;
         save(data)
@@ -14,8 +12,8 @@ const sell = (title, quantity) => {
     return false;
 }
 
-const add = (title, quantity, price = 1, author = 'no_name') => {
-    const item = find(title);
+const add = (title, quantity, price = 1, author = 'no_name', data) => {
+    const item = find(title, data);
     if (item) {
         item.quantity += quantity;
     }
@@ -26,8 +24,8 @@ const add = (title, quantity, price = 1, author = 'no_name') => {
     save(data)
 }
 
-const update = (title, price) => {
-    const item = find(title);
+const update = (title, price, data) => {
+    const item = find(title, data);
     if (item) {
         item.price = price;
         save(data);
@@ -36,4 +34,4 @@ const update = (title, price) => {
 }
 const save = data => fs.writeFileSync('books.json', JSON.stringify(data))
 
-module.exports = { data, find, sell, add, update }
+module.exports = { find, sell, add, update }

@@ -1,14 +1,16 @@
 var express = require('express');
-const { check, validationResult } = require('express-validator');
 const fs = require('fs');
-const { data, find, sell, add, update } = require('./book-helper')
+const { check, validationResult } = require('express-validator');
+const { find, sell, add, update } = require('./book-helper')
 
 var router = express.Router();
-/* GET all books listing. */
+const data = JSON.parse(fs.readFileSync('books.json'));
+
+/* get all books listing or search by title */
 router.get('/', (req, res, next) => {
   const title = req.query.title;
   if (title) {
-    const item = find(req.query.title);
+    const item = find(title, data);
     if (item)
       res.send(item);
     else
@@ -19,7 +21,6 @@ router.get('/', (req, res, next) => {
   }
 });
 
-/* add error handler */
 /* update stock, show error if the book does not exist or the stock is lower, update total books are sold and sum */
 router.post('/sell', [
   check('title').not().isEmpty().isString().isLength({ min: 1 }).withMessage('Title must have at least one character'),
@@ -30,7 +31,7 @@ router.post('/sell', [
     return res.status(400).jsonp(errors.array());
   }
   const { title, quantity } = { title: req.body.title, quantity: req.body.quantity || 1 }
-  const success = sell(title, quantity);
+  const success = sell(title, quantity, data);
 
   if (success) {
     res.send(`sold ${quantity} ${title}`);
@@ -56,7 +57,7 @@ router.post('/add', [
     price: +req.body.price, author: req.body.author
   };
 
-  add(title, quantity, price, author);
+  add(title, quantity, price, author, data);
   console.log(`added ${quantity} ${title} to the stock`);
   res.send(`added ${quantity} ${title} to the stock`);
 });
@@ -72,7 +73,7 @@ router.post('/update', [
     return res.status(400).jsonp(errors.array());
   }
   const { title, price } = { title: req.body.title, price: req.body.price };
-  const item = update(title, price);
+  const item = update(title, price, data);
   if (item) {
     res.send(item);
   }
