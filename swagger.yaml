@@ -61,7 +61,7 @@ paths:
     post:
       tags:
         - Update
-      summary: "A request to get an object from storage"
+      summary: update book sprice
       requestBody:
         description: Optional description in *Markdown*
         required: true
