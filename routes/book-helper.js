@@ -25,6 +25,8 @@ const add = (title, quantity, price = 1, author = 'no_name', data) => {
 }
 
 const update = (title, price, data) => {
+    if (price <=0 )
+       return false;
     const item = find(title, data);
     if (item) {
         item.price = price;
