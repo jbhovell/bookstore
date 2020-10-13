@@ -24,7 +24,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                     // Table just created, creating some rows
                     var insert = 'INSERT INTO user (name, email, password) VALUES (?,?,?)'
                     db.run(insert, ["store_owner", "store_owner@jbh_express_store.com", md5("owner_pass")])
-                    db.run(insert, ["customer", "customer@jbh_express_store.com", md5("user_pass")])
+                    db.run(insert, ["customer", "customer@jbh_express_store.com", md5("customer_pass")])
                 }
             });
     }
