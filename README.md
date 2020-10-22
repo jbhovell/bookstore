@@ -49,11 +49,13 @@ http://localhost:3000/ui
 - [ ] redirect to v2 (302 found)
 - [ ] express-cache-control middleware to set cache-control max-age
 - [ ] test error cases, exceptions
+- [ ] Jest
+- [ ] Cucumber tests
 - [ ] convert book-helper find & save to asynchronous 
 - [ ] MongoDB Mongoose for Node.js for book lists
 - [ ] restructure files folders 
 - [ ] error handling
-- [ ] authentication & Authorisation, MongoDB Mongoose  for users, node basic-auth/passport/passport with linkedin or google/facebook
+- [ ] authentication & Authorisation, MongoDB Mongoose  for users, node basic-auth/passport with a third party auth (google/facebook/github)
 - [ ] react
 - [ ] docker
 - [ ] nginx
