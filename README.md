@@ -1,7 +1,7 @@
 # bookstore
 Hi! <img src="public/images/wave.gif" width="30px">  Welcome to my bookstore repo.
 
-I built the REST API with Node.js, Express, Pug, Swagger and SQLite. It lists, adds, sells books and updates books price.
+I built the REST API with Node.js, Express, Pug, Swagger and MongoDB. It lists, adds, sells books and updates books price.
 
 The application is running on Heroku.
 
