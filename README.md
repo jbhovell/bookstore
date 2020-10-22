@@ -56,7 +56,7 @@ http://localhost:3000/ui
 - [ ] restructure files folders 
 - [ ] error handling
 - [ ] authentication & Authorisation, MongoDB Mongoose  for users, node basic-auth/passport with a third party auth (google/facebook/github)
-- [ ] self generated cert/key for local server
+- [ ] self generated cert/key for local server https
 - [ ] react
 - [ ] docker
 - [ ] nginx
