@@ -50,6 +50,7 @@ http://localhost:3000/ui
 - [ ] express-cache-control middleware to set cache-control max-age
 - [ ] test error cases, exceptions
 - [ ] convert book-helper find & save to asynchronous 
+- [ ] Mangodb/Mongoose
 - [ ] restructure files folders 
 - [ ] error handling
 - [ ] authentication, roles permissions of view and edit
