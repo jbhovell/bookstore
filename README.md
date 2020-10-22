@@ -45,6 +45,9 @@ http://localhost:3000/ui
 
 # To do
 
+- [ ] express-paginate
+- [ ] redirect to v2 (302 found)
+- [ ] cache middleware
 - [ ] test error cases, exceptions
 - [ ] convert book-helper find & save to asynchronous 
 - [ ] restructure files folders 
