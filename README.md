@@ -53,7 +53,7 @@ http://localhost:3000/ui
 - [ ] MongoDB Mongoose for Node.js for book lists
 - [ ] restructure files folders 
 - [ ] error handling
-- [ ] authentication & Authorisation, MongoDB Mongoose  for users, node basic-auth/passport/passport with linkedin or google
+- [ ] authentication & Authorisation, MongoDB Mongoose  for users, node basic-auth/passport/passport with linkedin or google/facebook
 - [ ] react
 - [ ] docker
 - [ ] nginx
