@@ -50,10 +50,10 @@ http://localhost:3000/ui
 - [ ] express-cache-control middleware to set cache-control max-age
 - [ ] test error cases, exceptions
 - [ ] convert book-helper find & save to asynchronous 
-- [ ] MongoDB Mongoose for Node.js
+- [ ] MongoDB Mongoose for Node.js for book lists
 - [ ] restructure files folders 
 - [ ] error handling
-- [ ] authentication, roles permissions of view and edit
+- [ ] authentication & Authorisation, MongoDB Mongoose  for users, node basic-auth/passport/passport with linkedin or google
 - [ ] react
 - [ ] docker
 - [ ] nginx
