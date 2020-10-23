@@ -33,7 +33,7 @@ var john_douglas = new Contact({
 var jianfang_bladen = new Contact({
     firstname: "Jianfang",
     lastname: "Bladen-Hovell",
-    title: "Mrr.",
+    title: "Mrs.",
     company: "BBC.",
     jobtitle: "Developer",
     primarycontactnumber: "+447599966688",
@@ -53,7 +53,7 @@ var mark = new Contact({
     othercontactnumbers: [],
     primaryemailaddress: "mark@xyz.com",
     emailaddresses: ["mark@xyz.com"],
-    groups: ["Dev"]
+    groups: ["Test"]
 });
 
 var db = mongoose.connection;
@@ -62,7 +62,7 @@ mongoose.connect('mongodb://localhost/contacts');
 
 var router = express.Router();
 
-router.get('/init', function (req, res, next) {
+router.post('/init', function (req, res, next) {
     mark.save(function (error) {
         if (error) {
             console.log('Error while saving contact for Mr. John Douglas');
@@ -73,16 +73,26 @@ router.get('/init', function (req, res, next) {
             console.log('Contact for Mr. John Douglas has been successfully stored');
         }
     });
-    // john_douglas.save(function (error) {
-    //     if (error) {
-    //         console.log('Error while saving contact for Mr. John Douglas');
-    //         console.log(error);
-    //     }
-    //     else {
-    //         john_douglas.save();
-    //         console.log('Contact for Mr. John Douglas has been successfully stored');
-    //     }
-    // });
+    john_douglas.save(function (error) {
+        if (error) {
+            console.log('Error while saving contact for Mr. John Douglas');
+            console.log(error);
+        }
+        else {
+            john_douglas.save();
+            console.log('Contact for Mr. John Douglas has been successfully stored');
+        }
+    });
+    jianfang_bladen.save(function (error) {
+        if (error) {
+            console.log('Error while saving contact for Mr. John Douglas');
+            console.log(error);
+        }
+        else {
+            jianfang_bladen.save();
+            console.log('Contact for Mr. John Douglas has been successfully stored');
+        }
+    });
 })
 
 router.get('/', function (req, res, next) {
@@ -122,6 +132,33 @@ router.get('/number/:number', function (req, res, next) {
                     res.send(result);
                 }
                 console.log(result);
+            }
+        });
+});
+
+
+router.delete('/number/:number', function (req, res, next) {
+    Contact.findOne({ primarycontactnumber: req.params.number },
+        function (error, result) {
+            if (error) {
+                console.error(error);
+                res.writeHead(500,
+                    { 'Content-Type': 'text/plain' });
+                res.end('Internal server error');
+                return;
+            } else {
+                result.remove(function (error) {
+                    if (!error) {
+                        result.remove();
+                    }
+                    else {
+                        console.log(error);
+                    }
+                    if (res != null) {
+                        res.send('Deleted');
+                    }
+                    return;
+                });
             }
         });
 });
