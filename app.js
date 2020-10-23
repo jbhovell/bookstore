@@ -17,6 +17,8 @@ const errorHandler = require('errorhandler')
 var favicon = require('serve-favicon')
 var mongoose = require('mongoose');
 var auth = require('basic-auth')
+var https = require('https');
+const fs = require('fs');
 
 const swaggerFile = path.join(__dirname, 'swagger.yaml');
 const swaggerDocument = YAML.load(swaggerFile);
@@ -122,5 +124,15 @@ app.use(function (err, req, res, next) {
 
 app.use((req, res) => res.status(404).json({ error: 'Not found' }));
 app.use((req, res) => res.status(400).json({ error: 'Bad request' }));
+
+app.set('port', process.env.PORT || 3443);
+
+var options = {
+  key:
+    fs.readFileSync('./bookstore.pem'),
+  cert: fs.readFileSync('./bookstore.crt')
+};
+
+https.createServer(options, app).listen(app.get('port'));
 
 module.exports = app;

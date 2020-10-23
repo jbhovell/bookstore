@@ -52,6 +52,9 @@ http://localhost:3000/ui
 - [x] MongoDB Mongoose for users
 - [ ] MongoDB Mongoose for books
 - [x] express-cache-control middleware to set cache-control max-age
+- [x] authentication (basic-auth)
+- [ ] authentication & authorisatio, passport with a third party auth (google/facebook/github)
+- [x] enable https with self generated cert/key, https://localhost:3443
 - [ ] express-paginate
 - [ ] redirect to v2 (302 found)
 - [ ] test error cases, exceptions
@@ -59,8 +62,6 @@ http://localhost:3000/ui
 - [ ] convert book-helper find & save to asynchronous 
 - [ ] restructure files folders 
 - [ ] error handling
-- [ ] authentication & Authorisation, node basic-auth or passport with a third party auth (google/facebook/github)
-- [ ] self generated cert/key, https://localhost:3443
 - [ ] react
 - [ ] docker
 - [ ] nginx
