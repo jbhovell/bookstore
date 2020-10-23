@@ -2,14 +2,16 @@ var express = require('express');
 const fs = require('fs');
 const { check, validationResult } = require('express-validator');
 const { find, sell, add, update } = require('./book-helper')
+const CacheControl = require("express-cache-control")
+var cache = new CacheControl().middleware;
 
 var router = express.Router();
 const data = JSON.parse(fs.readFileSync('books.json'));
 
 /* get all books listing or search by title */
-router.get('/', (req, res, next) => {
+router.get('/', cache('minutes', 5), (req, res, next) => {
   const title = req.query.title;
-  if (title) {
+  if(title) {
     const item = find(title, data);
     if (item)
       res.send(item);
