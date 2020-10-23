@@ -62,7 +62,7 @@ mongoose.connect('mongodb://localhost/contacts');
 
 var router = express.Router();
 
-router.post('/init', function (req, res, next) {
+router.put('/init', function (req, res, next) {
     mark.save(function (error) {
         if (error) {
             console.log('Error while saving contact for Mr. John Douglas');
