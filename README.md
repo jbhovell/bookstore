@@ -43,19 +43,23 @@ http://localhost:3000/books
 http://localhost:3000/ui
 ```
 
-# To do
+# What I used
 
+- [x] Node.js v14
+- [x] Express
+- [x] Swagger
+- [x] Jest for unit tests
+- [x] MongoDB Mongoose for users
+- [ ] MongoDB Mongoose for books
+- [x] express-cache-control middleware to set cache-control max-age
 - [ ] express-paginate
 - [ ] redirect to v2 (302 found)
-- [x] express-cache-control middleware to set cache-control max-age
 - [ ] test error cases, exceptions
-- [x] Jest
 - [ ] Cucumber tests
 - [ ] convert book-helper find & save to asynchronous 
-- [ ] MongoDB Mongoose for Node.js for book lists
 - [ ] restructure files folders 
 - [ ] error handling
-- [ ] authentication & Authorisation, MongoDB Mongoose  for users, node basic-auth/passport with a third party auth (google/facebook/github)
+- [ ] authentication & Authorisation, node basic-auth or passport with a third party auth (google/facebook/github)
 - [ ] self generated cert/key, https://localhost:3443
 - [ ] react
 - [ ] docker
