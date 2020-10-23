@@ -1,7 +1,7 @@
 # bookstore
 Hi! <img src="public/images/wave.gif" width="30px">  Welcome to my bookstore repo.
 
-I built the REST API with Node.js, Express, Pug, Swagger and MongoDB. It lists, adds, sells books and updates books price.
+I built the REST API with Node.js, Express, Pug, Swagger and MongoDB. It lists, adds, sells books and updates books price. Some operations are only allowed to be performed by the authenticated users with the right permissions.
 
 The application is running on Heroku.
 
@@ -49,11 +49,14 @@ http://localhost:3000/ui
 - [ ] redirect to v2 (302 found)
 - [ ] express-cache-control middleware to set cache-control max-age
 - [ ] test error cases, exceptions
+- [ ] Jest
+- [ ] Cucumber tests
 - [ ] convert book-helper find & save to asynchronous 
 - [ ] MongoDB Mongoose for Node.js for book lists
 - [ ] restructure files folders 
 - [ ] error handling
-- [ ] authentication & Authorisation, MongoDB Mongoose  for users, node basic-auth/passport/passport with linkedin or google/facebook
+- [ ] authentication & Authorisation, MongoDB Mongoose  for users, node basic-auth/passport with a third party auth (google/facebook/github)
+- [ ] self generated cert/key, https://localhost:3443
 - [ ] react
 - [ ] docker
 - [ ] nginx
