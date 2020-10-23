@@ -15,6 +15,8 @@ const methodOverride = require('method-override')
 const errorHandler = require('errorhandler')
 
 var favicon = require('serve-favicon')
+var mongoose = require('mongoose');
+var auth = require('basic-auth')
 
 const swaggerFile = path.join(__dirname, 'swagger.yaml');
 const swaggerDocument = YAML.load(swaggerFile);
@@ -36,6 +38,55 @@ app.use('/ui', (req, res, next) => {
   next();
 }, swaggerUi.serve, swaggerUi.setup());
 
+var authUserSchema = new mongoose.Schema({
+  username: { type: String, index: { unique: true } },
+  password: String,
+  role: String,
+});
+
+var AuthUser = mongoose.model('AuthUser', authUserSchema);
+
+var adminUser = new AuthUser({
+  username: 'admin',
+  password: 'admin',
+  role: 'Admin'
+});
+
+app.use(function (request, response, next) {
+  var user = auth(request);
+  if (user === undefined) {
+    console.log('User information is not available in the request ');
+    response.statusCode = 401;
+    response.setHeader('WWW-Authenticate', 'Basic');
+    response.end('Unauthorized');
+  } else {
+    authenticate(user, response, next);
+  }
+});
+
+function authenticate(user, response, next) {
+  var result = false;
+  AuthUser.findOne({
+    username: user['name'], password:
+      user['pass']
+  },
+    function (error, data) {
+      if (error) {
+        console.log(error);
+        response.statusCode = 401;
+        response.end('Unauthorized');
+      } else {
+        if (!data) {
+          console.log('Unknown user');
+          response.statusCode = 401;
+          response.end('Unauthorized');
+        } else {
+          console.log(data.username + ' authenticated successfully');
+          next();
+        }
+      }
+    });
+}
 
 if ('development' == app.get('env')) {
   app.use(errorHandler());
