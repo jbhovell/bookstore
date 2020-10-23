@@ -43,6 +43,19 @@ var jianfang_bladen = new Contact({
     groups: ["Dev"]
 });
 
+var mark = new Contact({
+    firstname: "mark",
+    lastname: "Bladen-Hovell",
+    title: "Mr.",
+    company: "ABC Co.",
+    jobtitle: "Developer",
+    primarycontactnumber: "1234567",
+    othercontactnumbers: [],
+    primaryemailaddress: "mark@xyz.com",
+    emailaddresses: ["mark@xyz.com"],
+    groups: ["Dev"]
+});
+
 var db = mongoose.connection;
 mongoose.connect('mongodb://localhost/contacts');
 
@@ -50,31 +63,29 @@ mongoose.connect('mongodb://localhost/contacts');
 var router = express.Router();
 
 router.get('/init', function (req, res, next) {
-    jianfang_bladen.save(function (error) {
+    mark.save(function (error) {
         if (error) {
             console.log('Error while saving contact for Mr. John Douglas');
             console.log(error);
         }
         else {
-            john_douglas.save();
+            mark.save();
             console.log('Contact for Mr. John Douglas has been successfully stored');
         }
     });
-    john_douglas.save(function (error) {
-        if (error) {
-            console.log('Error while saving contact for Mr. John Douglas');
-            console.log(error);
-        }
-        else {
-            john_douglas.save();
-            console.log('Contact for Mr. John Douglas has been successfully stored');
-        }
-    });
+    // john_douglas.save(function (error) {
+    //     if (error) {
+    //         console.log('Error while saving contact for Mr. John Douglas');
+    //         console.log(error);
+    //     }
+    //     else {
+    //         john_douglas.save();
+    //         console.log('Contact for Mr. John Douglas has been successfully stored');
+    //     }
+    // });
 })
 
 router.get('/', function (req, res, next) {
-
-
     Contact.find({}, function (error, result) {
         if (error) {
             console.error(error);
@@ -89,23 +100,28 @@ router.get('/', function (req, res, next) {
 });
 
 
-router.get('/:number', function (req, res, next) {
-
-    Contact.findOne({ primarycontactnumber: '+359777223345' },
-        function (error, data) {
+router.get('/number/:number', function (req, res, next) {
+    Contact.findOne({ primarycontactnumber: req.params.number },
+        function (error, result) {
             if (error) {
-                console.log(error);
+                console.error(error);
+                res.writeHead(500,
+                    { 'Content-Type': 'text/plain' });
+                res.end('Internal server error');
                 return;
             } else {
-                if (!data) {
-                    console.log('not found');
+                if (!result) {
+                    if (res != null) {
+                        res.writeHead(404, { 'Content-Type': 'text/plain' });
+                        res.end('Not Found');
+                    }
                     return;
-                } else {
-                    data.remove(function (error) {
-                        if (!error) { data.remove(); }
-                        else { console.log(error); }
-                    });
                 }
+                if (res != null) {
+                    res.setHeader('Content-Type', 'application/json');
+                    res.send(result);
+                }
+                console.log(result);
             }
         });
 });
