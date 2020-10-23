@@ -42,6 +42,8 @@ http://localhost:3000/
 http://localhost:3000/books
 http://localhost:3000/ui
 ```
+https is enabled with self generated keys.
+https://localhost:3443
 
 # What I used
 
@@ -53,8 +55,9 @@ http://localhost:3000/ui
 - [ ] MongoDB Mongoose for books
 - [x] express-cache-control middleware to set cache-control max-age
 - [x] authentication (basic-auth)
-- [ ] authentication & authorisatio, passport with a third party auth (google/facebook/github)
+- [ ] authentication & authorisation, passport with a third party auth (google/facebook/github)
 - [x] enable https with self generated cert/key, https://localhost:3443
+- [x] convert callback functions to async/await
 - [ ] express-paginate
 - [ ] redirect to v2 (302 found)
 - [ ] test error cases, exceptions
