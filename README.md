@@ -47,9 +47,9 @@ http://localhost:3000/ui
 
 - [ ] express-paginate
 - [ ] redirect to v2 (302 found)
-- [ ] express-cache-control middleware to set cache-control max-age
+- [x] express-cache-control middleware to set cache-control max-age
 - [ ] test error cases, exceptions
-- [ ] Jest
+- [x] Jest
 - [ ] Cucumber tests
 - [ ] convert book-helper find & save to asynchronous 
 - [ ] MongoDB Mongoose for Node.js for book lists

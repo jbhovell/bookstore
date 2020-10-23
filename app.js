@@ -7,9 +7,14 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var booksRouter = require('./routes/books');
 var usersRouter = require('./routes/users');
+var contactsRouter = require('./routes/contacts');
 
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
+
+const methodOverride = require('method-override')
+const errorHandler = require('errorhandler')
+
 var favicon = require('serve-favicon')
 
 const swaggerFile = path.join(__dirname, 'swagger.yaml');
@@ -33,6 +38,9 @@ app.use('/ui', (req, res, next) => {
 }, swaggerUi.serve, swaggerUi.setup());
 
 
+if ('development' == app.get('env')) {
+  app.use(errorHandler());
+}
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -41,6 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/books', booksRouter);
 app.use('/users', usersRouter);
+app.use('/contacts', contactsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
