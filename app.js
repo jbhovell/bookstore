@@ -1,32 +1,35 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var booksRouter = require('./routes/books');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const booksRouter = require('./routes/books');
+const usersRouter = require('./routes/users');
 
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
 
-const methodOverride = require('method-override')
-const errorHandler = require('errorhandler')
+const methodOverride = require('method-override');
+const errorHandler = require('errorhandler');
 
-var favicon = require('serve-favicon')
-var mongoose = require('mongoose');
-var auth = require('basic-auth')
-var https = require('https');
+const favicon = require('serve-favicon');
+const mongoose = require('mongoose');
+const auth = require('basic-auth');
+const https = require('https');
 const fs = require('fs');
+const helmet = require('helmet');
 
 const swaggerFile = path.join(__dirname, 'swagger.yaml');
 const swaggerDocument = YAML.load(swaggerFile);
 
 
-var app = express();
+const app = express();
 
-app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')))
+app.use(helmet());
+
+app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -40,22 +43,22 @@ app.use('/ui', (req, res, next) => {
   next();
 }, swaggerUi.serve, swaggerUi.setup());
 
-var authUserSchema = new mongoose.Schema({
-  username: { type: String, index: { unique: true } },
+const authUserSchema = new mongoose.Schema({
+  username: {type: String, index: {unique: true}},
   password: String,
   role: String,
 });
 
-var AuthUser = mongoose.model('AuthUser', authUserSchema);
+const AuthUser = mongoose.model('AuthUser', authUserSchema);
 
-var adminUser = new AuthUser({
+const adminUser = new AuthUser({
   username: 'admin',
   password: 'admin',
-  role: 'Admin'
+  role: 'Admin',
 });
 
-app.use(function (request, response, next) {
-  var user = auth(request);
+app.use(function(request, response, next) {
+  const user = auth(request);
   if (user === undefined) {
     console.log('User information is not available in the request ');
     response.statusCode = 401;
@@ -67,34 +70,34 @@ app.use(function (request, response, next) {
 });
 
 function authenticate(user, response, next) {
-  var result = false;
+  const result = false;
   AuthUser.findOne({
     username: user['name'], password:
-      user['pass']
+      user['pass'],
   },
-    function (error, data) {
-      if (error) {
-        console.log(error);
+  function(error, data) {
+    if (error) {
+      console.log(error);
+      response.statusCode = 401;
+      response.end('Unauthorized');
+    } else {
+      if (!data) {
+        console.log('Unknown user');
         response.statusCode = 401;
         response.end('Unauthorized');
       } else {
-        if (!data) {
-          console.log('Unknown user');
-          response.statusCode = 401;
-          response.end('Unauthorized');
-        } else {
-          console.log(data.username + ' authenticated successfully');
-          next();
-        }
+        console.log(data.username + ' authenticated successfully');
+        next();
       }
-    });
+    }
+  });
 }
 
 if ('development' == app.get('env')) {
   app.use(errorHandler());
 }
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -103,14 +106,14 @@ app.use('/books', booksRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
   next(createError(404));
 });
 
 app.use('/ui', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -119,18 +122,18 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
   console.error(err);
-  res.status(500).json({ error: 'Internal server error' });
+  res.status(500).json({error: 'Internal server error'});
 });
 
-app.use((req, res) => res.status(404).json({ error: 'Not found' }));
-app.use((req, res) => res.status(400).json({ error: 'Bad request' }));
+app.use((req, res) => res.status(404).json({error: 'Not found'}));
+app.use((req, res) => res.status(400).json({error: 'Bad request'}));
 
 app.set('port', process.env.PORT || 3443);
 
-var options = {
+const options = {
   key:
     fs.readFileSync('./bookstore.pem'),
-  cert: fs.readFileSync('./bookstore.crt')
+  cert: fs.readFileSync('./bookstore.crt'),
 };
 
 https.createServer(options, app).listen(app.get('port'));

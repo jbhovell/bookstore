@@ -57,7 +57,9 @@ https://localhost:3443
 - [x] authentication (basic-auth)
 - [ ] authentication & authorisation, passport with a third party auth (google/facebook/github)
 - [x] enable https with self generated cert/key, https://localhost:3443
-- [x] convert callback functions to async/await
+- [ ] convert callback functions to async/await
+- [x] use helmet to enhance security
+- [x] eslint, eslint-plugin-security
 - [ ] express-paginate
 - [ ] redirect to v2 (302 found)
 - [ ] test error cases, exceptions
