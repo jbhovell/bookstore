@@ -60,6 +60,7 @@ https://localhost:3443
 - [ ] convert callback functions to async/await
 - [x] use helmet to enhance security
 - [x] eslint, eslint-plugin-security
+- [ ] rate limiter
 - [ ] express-paginate
 - [ ] redirect to v2 (302 found)
 - [ ] test error cases, exceptions
