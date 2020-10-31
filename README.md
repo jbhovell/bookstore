@@ -58,6 +58,8 @@ https://localhost:3443
 - [ ] authentication & authorisation, passport with a third party auth (google/facebook/github)
 - [x] enable https with self generated cert/key, https://localhost:3443
 - [ ] convert callback functions to async/await
+- [ ] RXjs
+- [ ] Clojure
 - [x] use helmet to enhance security
 - [x] eslint, eslint-plugin-security
 - [ ] rate limiter
