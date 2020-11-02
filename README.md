@@ -66,7 +66,7 @@ https://localhost:3443
 - [ ] express-paginate
 - [ ] redirect to v2 (302 found)
 - [ ] test error cases, exceptions
-- [ ] Cucumber tests
+- [ ] Cucumber with JavaScript 
 - [ ] convert book-helper find & save to asynchronous 
 - [ ] restructure files folders 
 - [ ] error handling
