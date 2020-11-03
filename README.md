@@ -72,6 +72,7 @@ https://localhost:3443
 - [ ] error handling
 - [ ] react
 - [ ] redux
+- [ ] front end for mobile
 - [ ] docker
 - [ ] nginx
 
