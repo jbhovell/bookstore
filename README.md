@@ -51,6 +51,7 @@ https://localhost:3443
 - [x] Express
 - [x] Swagger
 - [x] Jest for unit tests
+- [x] CircleCI
 - [x] MongoDB Mongoose for users
 - [ ] MongoDB Mongoose for books
 - [x] express-cache-control middleware to set cache-control max-age
