@@ -55,7 +55,7 @@ https://localhost:3443
 - [ ] MongoDB Mongoose for books
 - [x] express-cache-control middleware to set cache-control max-age
 - [x] authentication (basic-auth)
-- [ ] authentication & authorisation, passport with a third party auth (google/facebook/github)
+- [ ] authentication & authorisation, passport/OAuth with a third party auth (google/facebook/github)
 - [x] enable https with self generated cert/key, https://localhost:3443
 - [ ] convert callback functions to async/await
 - [ ] RXjs
