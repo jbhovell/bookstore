@@ -71,6 +71,7 @@ https://localhost:3443
 - [ ] restructure files folders 
 - [ ] error handling
 - [ ] react
+- [ ] redux
 - [ ] docker
 - [ ] nginx
 
