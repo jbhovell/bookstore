@@ -73,6 +73,7 @@ https://localhost:3443
 - [ ] react
 - [ ] redux
 - [ ] front end for mobile
+- [ ] integration with Stripe payment
 - [ ] docker
 - [ ] nginx
 
