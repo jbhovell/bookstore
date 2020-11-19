@@ -77,5 +77,5 @@ https://localhost:3443
 - [ ] integration with Stripe payment
 - [ ] docker
 - [ ] nginx
-
+- [ ] redis
 ![](https://img.shields.io/badge/<Node.js>-<Swagger>-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=2bbc8a)
