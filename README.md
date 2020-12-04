@@ -67,7 +67,6 @@ https://localhost:3443
 - [ ] convert book-helper find & save to asynchronous 
 - [ ] restructure files folders 
 - [ ] error handling
-- [ ] react
 - [ ] redis
 - [ ] api gateway
 - [ ] kenesis 
