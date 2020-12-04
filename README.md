@@ -58,20 +58,15 @@ https://localhost:3443
 - [ ] authentication & authorisation, passport with a third party auth (google/facebook/github)
 - [x] enable https with self generated cert/key, https://localhost:3443
 - [ ] convert callback functions to async/await
-- [ ] RXjs
-- [ ] Clojure
 - [x] use helmet to enhance security
 - [x] eslint, eslint-plugin-security
 - [ ] rate limiter
-- [ ] express-paginate
-- [ ] redirect to v2 (302 found)
 - [ ] test error cases, exceptions
 - [ ] Cucumber with JavaScript 
 - [ ] convert book-helper find & save to asynchronous 
 - [ ] restructure files folders 
 - [ ] error handling
 - [ ] react
-- [ ] docker
 - [ ] nginx
 
 ![](https://img.shields.io/badge/<Node.js>-<Swagger>-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=2bbc8a)
