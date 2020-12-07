@@ -64,7 +64,7 @@ https://localhost:3443
 - [ ] rate limiter
 - [ ] test error cases, exceptions
 - [ ] Cucumber with JavaScript 
-- [ ] convert book-helper find & save to asynchronous 
+- [x] convert book-helper find & save to asynchronous 
 - [ ] restructure files folders 
 - [ ] error handling
 - [ ] redis
