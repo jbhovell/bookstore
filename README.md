@@ -51,23 +51,23 @@ https://localhost:3443
 - [x] Express
 - [x] Swagger
 - [x] Jest for unit tests
-- [x] CircleCI
 - [x] MongoDB Mongoose for users
-- [ ] MongoDB Mongoose for books
 - [x] express-cache-control middleware to set cache-control max-age
 - [x] authentication (basic-auth)
-- [ ] authentication & authorisation, passport/OAuth with a third party auth (google/facebook/github)
 - [x] enable https with self generated cert/key, https://localhost:3443
-- [ ] convert callback functions to async/await
 - [x] use helmet to enhance security
 - [x] eslint, eslint-plugin-security
+- [x] convert book-helper find & save to asynchronous 
+- [ ] MongoDB Mongoose for books
+- [ ] authentication & authorisation, passport/OAuth with a third party auth (google/facebook/github)
+- [ ] convert callback functions to async/await
 - [ ] rate limiter
 - [ ] test error cases, exceptions
 - [ ] Cucumber with JavaScript 
-- [x] convert book-helper find & save to asynchronous 
 - [ ] restructure files folders 
 - [ ] error handling
 - [ ] redis
 - [ ] api gateway
 - [ ] kenesis 
+- [ ] circleCI
 ![](https://img.shields.io/badge/<Node.js>-<Swagger>-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=2bbc8a)
