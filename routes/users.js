@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const contactSchema = new mongoose.Schema({
-  primarycontactnumber: {type: String, index: {unique: true}},
+  primarycontactnumber: { type: String, index: { unique: true } },
   firstname: String,
   lastname: String,
   title: String,
@@ -59,11 +59,10 @@ const mark = new Contact({
 const db = mongoose.connection;
 mongoose.connect('mongodb://localhost/contacts');
 
-
 const router = express.Router();
 
-router.put('/init', function(req, res, next) {
-  mark.save(function(error) {
+router.put('/init', (req, res, next) => {
+  mark.save(function (error) {
     if (error) {
       console.log('Error while saving contact for Mr. John Douglas');
       console.log(error);
@@ -72,7 +71,7 @@ router.put('/init', function(req, res, next) {
       console.log('Contact for Mr. John Douglas has been successfully stored');
     }
   });
-  john_douglas.save(function(error) {
+  john_douglas.save(function (error) {
     if (error) {
       console.log('Error while saving contact for Mr. John Douglas');
       console.log(error);
@@ -81,7 +80,7 @@ router.put('/init', function(req, res, next) {
       console.log('Contact for Mr. John Douglas has been successfully stored');
     }
   });
-  jianfang_bladen.save(function(error) {
+  jianfang_bladen.save(function (error) {
     if (error) {
       console.log('Error while saving contact for Mr. John Douglas');
       console.log(error);
@@ -92,8 +91,8 @@ router.put('/init', function(req, res, next) {
   });
 });
 
-router.get('/', function(req, res, next) {
-  Contact.find({}, function(error, result) {
+router.get('/', (req, res, next) => {
+  Contact.find({}, function (error, result) {
     if (error) {
       console.error(error);
       return null;
@@ -106,57 +105,56 @@ router.get('/', function(req, res, next) {
   });
 });
 
-
-router.get('/number/:number', function(req, res, next) {
-  Contact.findOne({primarycontactnumber: req.params.number},
-      function(error, result) {
-        if (error) {
-          console.error(error);
-          res.writeHead(500,
-              {'Content-Type': 'text/plain'});
-          res.end('Internal server error');
-          return;
-        } else {
-          if (!result) {
-            if (res != null) {
-              res.writeHead(404, {'Content-Type': 'text/plain'});
-              res.end('Not Found');
-            }
-            return;
-          }
+router.get('/number/:number', (req, res, next) => {
+  Contact.findOne({ primarycontactnumber: req.params.number },
+    function (error, result) {
+      if (error) {
+        console.error(error);
+        res.writeHead(500,
+          { 'Content-Type': 'text/plain' });
+        res.end('Internal server error');
+        return;
+      } else {
+        if (!result) {
           if (res != null) {
-            res.setHeader('Content-Type', 'application/json');
-            res.send(result);
+            res.writeHead(404, { 'Content-Type': 'text/plain' });
+            res.end('Not Found');
           }
-          console.log(result);
+          return;
         }
-      });
+        if (res != null) {
+          res.setHeader('Content-Type', 'application/json');
+          res.send(result);
+        }
+        console.log(result);
+      }
+    });
 });
 
 
-router.delete('/number/:number', function(req, res, next) {
-  Contact.findOne({primarycontactnumber: req.params.number},
-      function(error, result) {
-        if (error) {
-          console.error(error);
-          res.writeHead(500,
-              {'Content-Type': 'text/plain'});
-          res.end('Internal server error');
+router.delete('/number/:number', (req, res, next) => {
+  Contact.findOne({ primarycontactnumber: req.params.number },
+    function (error, result) {
+      if (error) {
+        console.error(error);
+        res.writeHead(500,
+          { 'Content-Type': 'text/plain' });
+        res.end('Internal server error');
+        return;
+      } else {
+        result.remove(function (error) {
+          if (!error) {
+            result.remove();
+          } else {
+            console.log(error);
+          }
+          if (res != null) {
+            res.send('Deleted');
+          }
           return;
-        } else {
-          result.remove(function(error) {
-            if (!error) {
-              result.remove();
-            } else {
-              console.log(error);
-            }
-            if (res != null) {
-              res.send('Deleted');
-            }
-            return;
-          });
-        }
-      });
+        });
+      }
+    });
 });
 
 module.exports = router;

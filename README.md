@@ -60,14 +60,6 @@ https://localhost:3443
 - [x] convert book-helper find & save to asynchronous 
 - [ ] MongoDB Mongoose for books
 - [ ] authentication & authorisation, passport/OAuth with a third party auth (google/facebook/github)
-- [ ] convert callback functions to async/await
-- [ ] rate limiter
-- [ ] test error cases, exceptions
 - [ ] Cucumber with JavaScript 
 - [ ] restructure files folders 
-- [ ] error handling
-- [ ] redis
-- [ ] api gateway
-- [ ] kenesis 
-- [ ] circleCI
 ![](https://img.shields.io/badge/<Node.js>-<Swagger>-informational?style=flat&logo=<LOGO_NAME>&logoColor=white&color=2bbc8a)
